@@ -35,10 +35,14 @@ namespace MediaPlayer
             if(openFileDialog.ShowDialog() == true)
             {
                 string filename = openFileDialog.FileName;
-                if (filename == null)
+                if (filename != null)
                 {
                     Uri uri = new Uri(filename);
                     MediaElement1.Source = uri;
+                    MediaElement1.LoadedBehavior = MediaState.Manual;
+                    MediaElement1.UnloadedBehavior = MediaState.Manual;
+                    MediaElement1.Volume = (double)sliderVol.Value;
+
                     MediaElement1.Play();
                 }
             }
@@ -99,12 +103,7 @@ namespace MediaPlayer
             MediaElement1.Volume = (double)sliderVol.Value;
             
             MediaElement1.Play();
-            if (MediaElement1.NaturalDuration.HasTimeSpan)
-                sliderSeek.Maximum = (double)MediaElement1.NaturalDuration.TimeSpan.TotalSeconds;
-            else
-            {
-                MessageBox.Show("hasTimeSpan returns false\n");
-            }
+            
         }
 
         private void Media_opened(object sender, RoutedEventArgs e)

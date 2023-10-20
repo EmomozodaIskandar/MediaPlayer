@@ -14,7 +14,7 @@
             <RowDefinition Height="80"/>
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" >
-            <MenuItem Header="File" VerticalAlignment="Center">
+            <MenuItem Header="_File" VerticalAlignment="Center">
                 <MenuItem Header="_Open" Click="OpenFileClicked"/>
                 <MenuItem Header="_Exit" Click="exit"/>
             </MenuItem>
