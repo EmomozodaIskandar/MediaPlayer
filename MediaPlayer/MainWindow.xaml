@@ -1,0 +1,36 @@
+﻿<Window x:Class="MediaPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MediaPlayer"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized" AllowDrop="True" Drop="Window_Drped">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" >
+            <MenuItem Header="File" VerticalAlignment="Center">
+                <MenuItem Header="_Open" Click="OpenFileClicked"/>
+                <MenuItem Header="_Exit" Click="exit"/>
+            </MenuItem>
+        </Menu>
+        <MediaElement Grid.Row="1" Name="MediaElement1" Width="auto" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center" MediaOpened="Media_opened" ></MediaElement>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Bottom">
+            <Button Name="StopStartButton" Click="stopStartClicked"  Width="80" Height="35" HorizontalAlignment="Left" Margin="5">
+                <materialDesign:PackIcon Kind="Pause" Name="stopStartPackIcon" />
+            </Button>
+            <Button Name="silentModeButton" Click="silentModeClicked"  Width="50" Height="35" HorizontalAlignment="Left" Margin="5" >
+                <materialDesign:PackIcon Kind="VolumeSource" Name="silentModesliderpackIcon"/>
+            </Button>
+            <Slider Width="100" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Name="sliderVol" ValueChanged="sliderVol_ValueChanged" Maximum="1" TickFrequency="0.1" LargeChange="0.1"  />
+            <TextBlock Name="timeTxb" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5" Text="0:00/0:00"/>
+        </StackPanel>
+        <Slider HorizontalAlignment="Left" Margin="14,4,0,0" Width="auto" MinWidth="500"  MaxWidth="1400" Grid.Row="2" VerticalAlignment="Top" Name="sliderSeek" ValueChanged="sliderSeek_ValueChanged" SmallChange="1"/>
+        
+    </Grid>
+</Window>
